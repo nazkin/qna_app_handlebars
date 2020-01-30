@@ -1,0 +1,19 @@
+DROP DATABASE IF EXISTS qna_app;
+CREATE DATABASE qna_app ;
+USE qna_app ;
+
+CREATE TABLE questions (
+  id INT NOT NULL AUTO_INCREMENT,
+  question VARCHAR(200) NULL,
+  user VARCHAR(50) NULL,
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE answers (
+ answerId INT NOT NULL AUTO_INCREMENT,
+ answer VARCHAR(200) NULL,
+ user VARCHAR(50) NULL, 
+ questionID INT NOT NULL,
+ PRIMARY KEY (answerId)
+);
