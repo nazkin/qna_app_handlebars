@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "19935ert7",
+  password: "*******",
   database: "qna_app"
 });
 
