@@ -1,10 +1,14 @@
+<div class = "jumbotron my-4">
+    <h1>Questions we all want an answer to...!!!!</h1>
+</div>
+
 <ul>
     {{#each quest}}
     <li>
-        <p> Question: {{question}}</p>
-        <p>User: {{user}}</p>
+        <h2> Question: {{question}}</h2>
+        <p>{{user}}</p>
     </li>
-   <a href="/questions/3" class ="btn btn-outline-warning">View</a>
+   <a href="/questions/{{id}}" class ="btn btn-outline-warning">Answer</a>
     {{/each}}
 </ul>
 

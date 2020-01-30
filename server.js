@@ -50,16 +50,44 @@ app.post('/api/questions', (req, res)=> {
     const user = req.body.user;
     const question = req.body.question;
     console.log(`User ${user} Q: ${question}`);
-    connection.query(`INSERT INTO questions(question, user) VALUES (?, ?);`, [user, question], (err, result)=>{
+    connection.query(`INSERT INTO questions(question, user) VALUES (?, ?);`, [question, user], (err, result)=>{
         if(err) throw err;
         console.log(result);
+        res.redirect('/questions');
     });
       
    
 });
 app.get("/questions/:id", (req, res)=>{
-    res.render('comment');
+    connection.query(`SELECT * FROM questions WHERE id = ?`, [req.params.id], (err, quest)=>{
+        if(err) throw err; 
+        console.log(quest);
+        
+        res.render('comment', quest[0]);
+    })
+    
 });
+app.get("/answers/:id", (req, res)=> {
+    connection.query(`SELECT * FROM answers WHERE questionID = ?`, [req.params.id], (err, ans)=> {
+        if(err) throw err;
+        const values = {
+            answers: [...ans]
+        }
+        res.render('answers', values);
+    })
+    
+});
+app.post("/api/questions/:id", (req, res)=> {
+    const user = req.body.user; 
+    const answer = req.body.answer;
+    const questID = req.params.id;
+    connection.query(`INSERT INTO answers(answer, user, questionID) VALUES (?,?,?)`, [ answer, user,questID], (err, ans)=> {
+        if(err) throw err;
+        console.log(ans);
+        res.redirect('/');
+    });
+});
+
 app.listen(PORT, function() {
     // Log (server-side) when our server has started
     console.log("Server listening on: http://localhost:" + PORT);

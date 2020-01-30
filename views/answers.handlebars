@@ -1,0 +1,13 @@
+ <div class="jumbotron my-4">
+      <h1>Here are answers to the question</h1>
+       <a href="/" class="btn btn-warning">Return to questions</a>
+ </div>
+
+ <div class="container d-flex flex-column justify-content-center">
+ {{#each answers}}
+<h2 clss="my-5">Answer: {{answer}}</h2>
+<p>User: {{user}}</p>
+ {{/each}}
+ </div>
+
+

@@ -1,1 +1,19 @@
-<h2>This is a comment page</h2>
+<h2>{{question}}</h2>
+<div class = "container">
+    <form action="/api/questions/{{id}}" method="POST">
+        <h2>Submit an answer to this question</h2>
+        <div class="form-group">
+           <label>User</label>
+           <input type="user" class="form-control" name="user"> 
+         </div>
+         <div class="form-group">
+           <label >Answer</label>
+           <input type="answer" class="form-control" name="answer">
+         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<a href="/answers/{{id}}" class='btn btn-success my-5'>View Answers</a>
+
+
